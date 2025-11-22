@@ -3,37 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Gallery</title>
+<title>JB Gallery Login</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="login-container">
+  <h1>Enter Password</h1>
+  <input type="password" id="password" placeholder="RACCOON password">
+  <button id="submit">Enter</button>
+  <p id="error" style="color:red;"></p>
+</div>
 
 <script>
-  // Simple password protection
-  let password = prompt("Enter the RACCOON password:");
-  if(password !== "peakJB2025") {
-      alert("Wrong password! Access denied.");
-      document.body.innerHTML = "<h1>Access Denied</h1>";
-      throw "Access Denied";
+const correctPassword = "peakJB2025";
+const submitBtn = document.getElementById("submit");
+const errorMsg = document.getElementById("error");
+
+submitBtn.addEventListener("click", () => {
+  const input = document.getElementById("password").value;
+  if(input === correctPassword){
+    window.location.href = "gallery.html";
+  } else {
+    errorMsg.textContent = "Wrong password! Try again 🦝";
   }
+});
 </script>
-
-<h1>Jonathan Bailey Photo Gallery</h1>
-<div class="gallery">
-  <img src="images/jb1.jpg" alt="JB1">
-  <img src="images/jb2.jpg" alt="JB2">
-  <img src="images/jb3.jpg" alt="JB3">
-</div>
-
-<!-- Modal / Lightbox -->
-<div id="modal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modal-img">
-  <div id="caption"></div>
-  <button id="prev">&#10094;</button>
-  <button id="next">&#10095;</button>
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>
